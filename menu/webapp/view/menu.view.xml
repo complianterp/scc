@@ -1,0 +1,54 @@
+<mvc:View controllerName="scc.menu.controller.menu" 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.tnt"
+	xmlns:m="sap.m"
+	height="100%"
+	class="side-navigation-demo">
+	<m:Button text="Toggle Collapse/Expand"
+			  icon="sap-icon://menu2"
+			  press="onCollapseExpandPress" />
+	<m:Button text="Show/Hide Sub Item 3"
+			  icon="sap-icon://menu2"
+			  press="onHideShowSubItemPress" />
+	<SideNavigation id="sideNavigation" selectedItem="subItemThree">
+		<item>
+			<NavigationList>
+				<NavigationListItem
+					text="Item 1"
+					icon="sap-icon://employee">
+					<NavigationListItem text="Sub Item 1" />
+					<NavigationListItem text="Sub Item 2" />
+					<NavigationListItem text="Sub Item 3" id="subItemThree"/>
+					<NavigationListItem text="Sub Item 4" />
+				</NavigationListItem>
+				<NavigationListItem
+					text="Item 2"
+					icon="sap-icon://building">
+					<NavigationListItem text="Sub Item 1" />
+					<NavigationListItem text="Sub Item 2" />
+					<NavigationListItem text="Sub Item 3" />
+					<NavigationListItem text="Sub Item 4" />
+				</NavigationListItem>
+			</NavigationList>
+		</item>
+		<fixedItem>
+			<NavigationList>
+				<NavigationListItem text="Item 1" icon="sap-icon://employee"/>
+				<NavigationListItem text="Item 2" icon="sap-icon://building"/>
+				<NavigationListItem text="Item 3" icon="sap-icon://card"/>
+			</NavigationList>
+		</fixedItem>
+	</SideNavigation>
+
+
+
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content></content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
+
+

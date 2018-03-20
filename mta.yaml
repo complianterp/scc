@@ -1,0 +1,43 @@
+ID: SCC
+_schema-version: '2.1'
+description: SAP Cloud Connector
+version: 0.0.1
+
+modules:
+ - name: db
+   type: hdb
+   path: db
+   requires:
+    - name: hdi_db
+
+
+ - name: SAPData
+   type: java
+   path: SAPData
+   parameters:
+      memory: 512M
+   provides:
+    - name: SAPData_api
+      properties:
+         url: ${default-url}
+   requires:
+    - name: hdi_db
+      properties:
+         JBP_CONFIG_RESOURCE_CONFIGURATION: '[tomcat/webapps/ROOT/META-INF/context.xml:
+            {"service_name_for_DefaultDB" : "~{hdi-container-name}"}]'
+
+
+ - name: menu
+   type: html5
+   path: menu
+   parameters:
+      disk-quota: 256M
+      memory: 256M
+   build-parameters:
+      builder: grunt
+
+resources:
+ - name: hdi_db
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
